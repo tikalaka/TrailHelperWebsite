@@ -19,5 +19,12 @@ h1{
 }
 
 #verticalLinks {
-    
+    border: 5px solid #855723;
+    /* background-color: #CDAA7D; */
+    background-color: #DEB887;
+    width: 15%;
+    height: 80%;
+    left: 18%;
+    top: 10%;
+    position: absolute;
 }
