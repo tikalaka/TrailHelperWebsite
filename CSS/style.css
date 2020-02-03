@@ -1,8 +1,23 @@
 body {
-    background-image: url("../images/ForestFog.jpg");
-    height: 5px;
+    background-image: url("../images/OtherForest.jpg");
+    background-size: cover;
 }
 h1{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
+    font-size: xx-large;
+}
+
+#mainContent {
+    border: 5px solid #855723;
+    /* background-color: #CDAA7D; */
+    background-color: #DEB887;
+    width: 50%;
+    height: 80%;
+    left: 35%;
+    top: 10%;
+    position: absolute;
+}
+
+#verticalLinks {
+    
 }
