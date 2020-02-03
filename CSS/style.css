@@ -9,6 +9,7 @@ h1{
 
 #mainContent {
     border: 5px solid #855723;
+    border-radius: 30px;
     /* background-color: #CDAA7D; */
     background-color: #DEB887;
     width: 50%;
@@ -20,6 +21,7 @@ h1{
 
 #verticalLinks {
     border: 5px solid #855723;
+    border-radius: 20px;
     /* background-color: #CDAA7D; */
     background-color: #DEB887;
     width: 15%;
@@ -27,4 +29,18 @@ h1{
     left: 18%;
     top: 10%;
     position: absolute;
+}
+
+#searchBar{
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: white;
+    padding: 12px 3px 12px 3px;
+}
+
+#searchBar:focus {
+    border: 2px solid #855723;
 }
