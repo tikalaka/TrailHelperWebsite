@@ -7,6 +7,11 @@ h1{
     font-size: xx-large;
 }
 
+.grid {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
 #mainContent {
     border: 5px solid #855723;
     border-radius: 30px;
