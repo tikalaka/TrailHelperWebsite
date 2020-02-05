@@ -1,0 +1,27 @@
+Info 0    [14:36:43.283] Format host information updated
+Info 1    [14:36:43.285] reload projects.
+Info 2    [14:36:43.285] Structure before ensureProjectForOpenFiles:
+Info 3    [14:36:43.285] Structure after ensureProjectForOpenFiles:
+Info 4    [14:36:43.285] Host file extension mappings updated
+Info 5    [14:36:43.303] Search path: c:/Users/Dani/git/TrailHelperWebsite/HTML
+Info 6    [14:36:43.305] For info: c:/Users/Dani/git/TrailHelperWebsite/HTML/hikePage.html :: No config files found.
+Info 7    [14:36:43.308] Loading global plugin @angular/language-service
+Info 8    [14:36:43.308] Enabling plugin @angular/language-service from candidate paths: C:/Users/Dani/.p2/pool/plugins/org.eclipse.wildwebdeveloper_0.5.3.202001151110/language-servers/node_modules/typescript/lib/tsserverlibrary.js/../../..,C:\Users\Dani\.p2\pool\plugins\org.eclipse.wildwebdeveloper_0.5.3.202001151110\language-servers\node_modules\@angular\language-service
+Info 9    [14:36:43.308] Loading @angular/language-service from C:/Users/Dani/.p2/pool/plugins/org.eclipse.wildwebdeveloper_0.5.3.202001151110/language-servers/node_modules/typescript/lib/tsserverlibrary.js/../../.. (resolved to C:/Users/Dani/.p2/pool/plugins/org.eclipse.wildwebdeveloper_0.5.3.202001151110/language-servers/node_modules/node_modules)
+Info 10   [14:36:43.500] Plugin validation succeded
+Info 11   [14:36:43.504] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 12   [14:36:44.173] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 1 structureChanged: true Elapsed: 669ms
+Info 13   [14:36:44.173] Project '/dev/null/inferredProject1*' (Inferred) 
+Info 14   [14:36:44.173] 	Files (6)
+
+Info 15   [14:36:44.173] -----------------------------------------------
+Info 16   [14:13:49.661] Search path: c:/Users/Dani/git/TrailHelperWebsite/HTML
+Info 17   [14:13:49.662] For info: c:/Users/Dani/git/TrailHelperWebsite/HTML/index.html :: No config files found.
+Info 18   [14:13:49.662] Starting updateGraphWorker: Project: /dev/null/inferredProject1*
+Info 19   [14:13:49.678] Finishing updateGraphWorker: Project: /dev/null/inferredProject1* Version: 2 structureChanged: true Elapsed: 16ms
+Info 20   [14:13:49.678] Project '/dev/null/inferredProject1*' (Inferred) 
+Info 21   [14:13:49.678] 	Files (7)
+
+Info 22   [14:13:49.678] -----------------------------------------------
+Info 23   [14:13:50.784] Search path: c:/Users/Dani/git/TrailHelperWebsite/HTML
+Info 24   [14:13:50.784] For info: c:/Users/Dani/git/TrailHelperWebsite/HTML/index.html :: No config files found.
