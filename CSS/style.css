@@ -7,6 +7,11 @@ h1{
     font-size: xx-large;
 }
 
+.grid {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
 #mainContent {
     border: 5px solid #855723;
     border-radius: 30px;
@@ -31,16 +36,7 @@ h1{
     position: absolute;
 }
 
-#searchBar{
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-    background-color: white;
-    padding: 12px 3px 12px 3px;
-}
-
-#searchBar:focus {
-    border: 2px solid #855723;
+#aboveBar {
+    border: 5px solid #855723;
+    background-color: #DEB887;
 }
