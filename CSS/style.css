@@ -6,6 +6,27 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: xx-large;
 }
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+li {
+    float: left;
+    padding: 8px;
+    border-right: 1px solid #855723;
+}
+li:last-child {
+    border-right: none;
+}
+a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 2px;
+}
+li a:hover {
+    background-color: #cc9966;
+}
 
 .grid {
     display: grid;
@@ -17,10 +38,14 @@ h1{
     border-radius: 30px;
     /* background-color: #CDAA7D; */
     background-color: #DEB887;
-    width: 50%;
+    /* width: 50%;
     height: 80%;
     left: 35%;
-    top: 10%;
+    top: 10%; */
+    grid-row-start: 2;
+    grid-row-end: 5;
+    grid-column-start: 2;
+    grid-column-end: 3;
     position: absolute;
 }
 
@@ -29,14 +54,21 @@ h1{
     border-radius: 20px;
     /* background-color: #CDAA7D; */
     background-color: #DEB887;
-    width: 15%;
+    /* width: 15%;
     height: 80%;
     left: 18%;
-    top: 10%;
+    top: 10%; */
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
     position: absolute;
 }
 
 #aboveBar {
     border: 5px solid #855723;
     background-color: #DEB887;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 4;
 }
