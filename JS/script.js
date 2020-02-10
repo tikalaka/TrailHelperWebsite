@@ -1,5 +1,3 @@
-// var x = document.getElementById("demo");
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -9,15 +7,11 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    let distance = "10" //grab this from whever the distance is entered
+    let distance = 10 //grab this from whever the distance is entered
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), distance)
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance))
     getWeather(String(position.coords.latitude), String(position.coords.longitude))
-    // getTrailByID(7017456)
-    // getTrailConditions(7017456)
-    // x.innerHTML = "Latitude: " + position.coords.latitude + 
-    // "<br>Longitude: " + position.coords.longitude;
 }
     
 function showError(error) {
@@ -75,9 +69,24 @@ function getTrails(latitude, longitude, distance){
     .then(response => response.json())
     .then((data) => {
         console.log(data)
+        filterTrails(data)
     })
     .catch((error) => console.log(error))
 }
+
+function filterTrails(trails, length, difficulty){
+    //filter trails based on given parameters
+
+    //this method will have the trails 
+}
+
+function getDistance(){
+    //get distance between trail and user location
+
+    //add the distance to the trail object
+}
+
+//these two methods were returning a 403 error, but we might not even need them
 
 // function getTrailByID(ID){
 //     let url = "https://www.hikingproject.com/data/get-trails-by-id?key=" + trailKey
