@@ -9,7 +9,7 @@
 <body>
     <h1>HikeIT!</h1>
     
-    <div id="aboveBar" class="grid">
+    <div id="aboveBar">
         <ul>
             <li><a href="index.html">Main</a></li>
             <li><a href="">All Trails</a></li>
@@ -17,7 +17,11 @@
         </ul>
     </div>
     
-    <div id="verticalLinks">
+    <div id="weatherInfo">
+
+    </div>
+
+    <div id="verticalLinks" class="grid">
         <form>
             <br>Location:<br>
             <input type="text" name="Longitude"><br>
@@ -30,14 +34,10 @@
             <input type="radio" name="distance" value="short" checked> Short<br>
             <input type="radio" name="distance" value="med"> Medium<br>
             <input type="radio" name="distance" value="long"> Long<br><br>
-            <input type="submit" value="Submit">
+            <input id="specifyHikeButton" type="submit" value="Submit">
         </form>
     </div>
     
-    <div id="weatherInfo" class="grid">
-
-    </div>
-
     <div id="mainContent" class="grid">
         <p>Welcome to HikeIT!</p>
         <p>Click the button to get your coordinates.</p>

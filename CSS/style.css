@@ -29,46 +29,37 @@ li a:hover {
 }
 
 .grid {
-    display: grid;
-    grid-row-gap: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 15px;
 }
 
 #mainContent {
     border: 5px solid #855723;
-    border-radius: 30px;
-    /* background-color: #CDAA7D; */
+    border-radius: 20px;
+    background-color: #CDAA7D;
     background-color: #DEB887;
-    /* width: 50%;
-    height: 80%;
-    left: 35%;
-    top: 10%; */
-    grid-row-start: 2;
-    grid-row-end: 5;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    position: absolute;
+    width: 60%;
+    height: 600px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 20px;
 }
 
 #verticalLinks {
     border: 5px solid #855723;
     border-radius: 20px;
-    /* background-color: #CDAA7D; */
     background-color: #DEB887;
-    /* width: 15%;
-    height: 80%;
-    left: 18%;
-    top: 10%; */
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    position: absolute;
+    margin-left: 100px;
+    padding: 20px;
+    font-size: 20px;
 }
 
 #aboveBar {
     border: 5px solid #855723;
     background-color: #DEB887;
-    grid-row-start: 1;
-    grid-column-start: 2;
-    grid-column-end: 4;
+}
+
+#specifyHikeButton {
+    background-color: #fff8dc;
 }
