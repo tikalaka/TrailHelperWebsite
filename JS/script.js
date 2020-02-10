@@ -1,5 +1,3 @@
-// var x = document.getElementById("demo");
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -9,14 +7,13 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    let distance = "10" //grab this from whever the distance is entered
+    let distance = 10 //grab this from whever the distance is entered
     var rating = document.getElementById("minimumRating").value;
     console.log(rating);
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), distance, rating)
-    getTrailByID(7017456)
-    getTrailConditions(7017456)
-    // x.innerHTML = "Latitude: " + position.coords.latitude + 
-    // "<br>Longitude: " + position.coords.longitude;
+    document.getElementById("latitude").value = position.coords.latitude
+    document.getElementById("longitude").value = position.coords.longitude
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating))
+    getWeather(String(position.coords.latitude), String(position.coords.longitude))
 }
     
 function showError(error) {
@@ -75,9 +72,24 @@ function getTrails(latitude, longitude, distance, minStars){
     .then(response => response.json())
     .then((data) => {
         console.log(data)
+        filterTrails(data)
     })
     .catch((error) => console.log(error))
 }
+
+function filterTrails(trails, length, difficulty){
+    //filter trails based on given parameters
+
+    //this method will have the trails 
+}
+
+function getDistance(){
+    //get distance between trail and user location
+
+    //add the distance to the trail object
+}
+
+//these two methods were returning a 403 error, but we might not even need them
 
 // function getTrailByID(ID){
 //     let url = "https://www.hikingproject.com/data/get-trails-by-id?key=" + trailKey
@@ -106,3 +118,20 @@ function getTrails(latitude, longitude, distance, minStars){
 //     })
 //     .catch((error) => console.log(error))
 // }
+
+function getWeather(latitude, longitude) {
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&units=I&key=65ed0458f53149b6b28e74556c9ec0bf`;
+
+    fetch(url, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data.data[0].weather.description, data.data[0].temp)
+            console.log(data.data[1].weather.description, data.data[1].temp)
+            console.log(data.data[2].weather.description, data.data[2].temp)
+            console.log(data.data[3].weather.description, data.data[3].temp)
+            console.log(data.data[4].weather.description, data.data[4].temp)
+        })
+        .catch((error) => console.log(error))
+}

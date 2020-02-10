@@ -6,7 +6,7 @@
     <link href='../CSS/style.css' rel='stylesheet' />
     <script src="../JS/script.js"></script>
 </head>
-<body>
+<body onload="getLocation()">
     <h1>HikeIT!</h1>
     
     <div id="aboveBar">
@@ -22,14 +22,18 @@
     </div>
 
     <div id="verticalLinks" class="grid">
+        <button onclick="getLocation()">Find My Location</button>
         <form>
             <br>Location:<br>
-            <input type="text" name="Longitude"><br>
-            <input type="text" name="Latitude"><br><br>
+            <input type="text" name="Longitude" id="longitude" placeholder="longitude"><br>
+            <input type="text" name="Latitude" id="latitude" placeholder="latitude"><br><br>
             Difficulty:<br>
             <input type="radio" name="difficulty" value="easy" checked> Easy<br>
-            <input type="radio" name="difficulty" value="med"> Medium<br>
-            <input type="radio" name="difficulty" value="hard"> Hard<br><br>
+            <input type="radio" name="difficulty" value="easy/inter"> Easy/ Intermediate<br>
+            <input type="radio" name="difficulty" value="inter"> Intermediate<br>
+            <input type="radio" name="difficulty" value="inter/diff"> Intermediate/ Difficult<br>
+            <input type="radio" name="difficulty" value="diff"> Difficult<br>
+            <input type="radio" name="difficulty" value="extreme"> Extremely Difficult<br><br>
             Distance:<br>
             <input type="radio" name="distance" value="short" checked> Short<br>
             <input type="radio" name="distance" value="med"> Medium<br>
@@ -48,7 +52,6 @@
         <p>Welcome to HikeIT!</p>
         <p>Click the button to get your coordinates.</p>
 
-        <button onclick="getLocation()">Try It</button>
     </div>
     
 
