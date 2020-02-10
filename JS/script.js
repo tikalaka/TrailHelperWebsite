@@ -10,7 +10,9 @@ function getLocation() {
     
 function showPosition(position) {
     let distance = "10" //grab this from whever the distance is entered
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), distance)
+    var rating = document.getElementById("minimumRating").value;
+    console.log(rating);
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), distance, rating)
     getTrailByID(7017456)
     getTrailConditions(7017456)
     // x.innerHTML = "Latitude: " + position.coords.latitude + 
@@ -62,9 +64,10 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 // conditionStatus: "Unknown"
 // conditionDetails: null
 // conditionDate: "1970-01-01 00:00:00"
-function getTrails(latitude, longitude, distance){
+
+function getTrails(latitude, longitude, distance, minStars){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude
+        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
 
     fetch(proxyurl + url, {
         method: 'GET'
