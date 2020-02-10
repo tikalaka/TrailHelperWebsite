@@ -10,10 +10,12 @@ function getLocation() {
     
 function showPosition(position) {
     let distance = "10" //grab this from whever the distance is entered
+    document.getElementById("latitude").value = position.coords.latitude
+    document.getElementById("longitude").value = position.coords.longitude
     getTrails(String(position.coords.latitude), String(position.coords.longitude), distance)
     getWeather(String(position.coords.latitude), String(position.coords.longitude))
-    getTrailByID(7017456)
-    getTrailConditions(7017456)
+    // getTrailByID(7017456)
+    // getTrailConditions(7017456)
     // x.innerHTML = "Latitude: " + position.coords.latitude + 
     // "<br>Longitude: " + position.coords.longitude;
 }
