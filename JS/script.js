@@ -9,7 +9,7 @@ function getLocation() {
 function showPosition(position) {
     let distance = 10 //grab this from whever the distance is entered
     var rating = document.getElementById("minimumRating").value;
-    console.log(rating);
+    console.log(rating); //filter by ratings
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
     getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating))
