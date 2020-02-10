@@ -11,6 +11,7 @@ function getLocation() {
 function showPosition(position) {
     let distance = "10" //grab this from whever the distance is entered
     getTrails(String(position.coords.latitude), String(position.coords.longitude), distance)
+    getWeather(String(position.coords.latitude), String(position.coords.longitude))
     getTrailByID(7017456)
     getTrailConditions(7017456)
     // x.innerHTML = "Latitude: " + position.coords.latitude + 
@@ -103,3 +104,20 @@ function getTrails(latitude, longitude, distance){
 //     })
 //     .catch((error) => console.log(error))
 // }
+
+function getWeather(latitude, longitude) {
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&units=I&key=65ed0458f53149b6b28e74556c9ec0bf`;
+
+    fetch(url, {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data.data[0].weather.description, data.data[0].temp)
+            console.log(data.data[1].weather.description, data.data[1].temp)
+            console.log(data.data[2].weather.description, data.data[2].temp)
+            console.log(data.data[3].weather.description, data.data[3].temp)
+            console.log(data.data[4].weather.description, data.data[4].temp)
+        })
+        .catch((error) => console.log(error))
+}
