@@ -11,12 +11,12 @@ function getLocation() {
     
 function showPosition(position) {
     let distance = 10 //grab this from whever the distance is entered
-    latitude = position.coords.latitude
-    longitude = position.coords.longitude
-    document.getElementById("latitude").value = latitude
-    document.getElementById("longitude").value = longitude
-    getTrails(String(latitude), String(longitude), String(distance))
-    getWeather(String(latitude), String(longitude))
+    var rating = document.getElementById("minimumRating").value;
+    console.log(rating); //filter by ratings
+    document.getElementById("latitude").value = position.coords.latitude
+    document.getElementById("longitude").value = position.coords.longitude
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating))
+    getWeather(String(position.coords.latitude), String(position.coords.longitude))
 }
     
 function showError(error) {
@@ -64,10 +64,10 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 // conditionStatus: "Unknown"
 // conditionDetails: null
 // conditionDate: "1970-01-01 00:00:00"
-function getTrails(distance){
-    //distance is retrieved from the form
+
+function getTrails(latitude, longitude, distance, minStars){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude
+        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
 
     fetch(proxyurl + url, {
         method: 'GET'
