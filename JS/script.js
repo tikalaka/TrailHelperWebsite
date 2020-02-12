@@ -10,10 +10,10 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var tempDistance = document.getElementById("userDistance").value;
+    var tempDistance = document.getElementById("distance").value;
     let distance = parseInt(tempDistance); //grab this from whever the distance is entered
     var rating = document.getElementById("minimumRating").value;
-    var length = document.getElementById("distance").value;
+    var length = document.getElementById("length").value;
     var difficulty = document.getElementById("difficulty").value;
     console.log(rating); //filter by ratings
     document.getElementById("latitude").value = position.coords.latitude
@@ -71,7 +71,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 function getTrails(latitude, longitude, distance, minStars, length, hardlevel){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
-
+    console.log(url)
+    
     fetch(proxyurl + url, {
         method: 'GET'
     })
