@@ -1,3 +1,6 @@
+var latitude = 0
+var longitude = 0
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -8,10 +11,12 @@ function getLocation() {
     
 function showPosition(position) {
     let distance = 10 //grab this from whever the distance is entered
-    document.getElementById("latitude").value = position.coords.latitude
-    document.getElementById("longitude").value = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance))
-    getWeather(String(position.coords.latitude), String(position.coords.longitude))
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
+    document.getElementById("latitude").value = latitude
+    document.getElementById("longitude").value = longitude
+    getTrails(String(latitude), String(longitude), String(distance))
+    getWeather(String(latitude), String(longitude))
 }
     
 function showError(error) {
@@ -59,7 +64,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 // conditionStatus: "Unknown"
 // conditionDetails: null
 // conditionDate: "1970-01-01 00:00:00"
-function getTrails(latitude, longitude, distance){
+function getTrails(distance){
+    //distance is retrieved from the form
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude
 
@@ -74,16 +80,20 @@ function getTrails(latitude, longitude, distance){
     .catch((error) => console.log(error))
 }
 
-function filterTrails(trails, length, difficulty){
+function filterTrails(trails, trailLength, trailDifficulty){
     //filter trails based on given parameters
 
-    //this method will have the trails 
+    //this method will have the trails
 }
 
-function getDistance(){
-    //get distance between trail and user location
-
-    //add the distance to the trail object
+//call this for every trail, and then add the distance from user to the object
+function getTrailDistanceFromUser(trailLatitude, trailLongitude){
+    if((trailLatitude == latitude) && (trailLongitude == longitude)){
+        return 0
+    }else{
+        //get distance between trail and user location
+        //based off google maps? or the math way
+    }
 }
 
 //these two methods were returning a 403 error, but we might not even need them
