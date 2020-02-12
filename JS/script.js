@@ -1,3 +1,6 @@
+var latitude = 0
+var longitude = 0
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -68,7 +71,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 function getTrails(latitude, longitude, distance, minStars, length, hardlevel){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
-
+    console.log(url)
+    
     fetch(proxyurl + url, {
         method: 'GET'
     })
