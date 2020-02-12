@@ -12,17 +12,22 @@ function getLocation() {
 function showPosition(position) {
     latitude = position.coords.latitude
     longitude = position.coords.longitude
+    
+    document.getElementById("latitude").value = latitude
+    document.getElementById("longitude").value = longitude
+    
+    getTrails()
+    getWeather(String(latitude), String(longitude))
+}
 
+function getTrails(){
     var distance = document.getElementById("distance").value;
     var rating = document.getElementById("minimumRating").value;
     var length = document.getElementById("length").value;
     var difficulty = document.getElementById("difficulty").value;
-    
-    document.getElementById("latitude").value = latitude
-    document.getElementById("longitude").value = longitude
+    console.log(distance + " " + rating + " " + length + " " + difficulty)
 
-    getTrails(String(latitude), String(longitude), String(distance), String(rating), String(length), String(difficulty))
-    getWeather(String(latitude), String(longitude))
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating), String(length), String(difficulty))
 }
     
 function showError(error) {
@@ -74,7 +79,6 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
-    console.log(url)
     
     fetch(proxyurl + url, {
         method: 'GET'
@@ -88,24 +92,25 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     .catch((error) => console.log(error))
 }
 
-function filterTrails(trails, length, rating, difficulty){
+function filterTrails(trails, length, difficulty){
     var filteredTrails
+
+    console.log("FILTER BY: trails: " + trails + " length: " + length + " difficulty: " + difficulty )
 
     for(var i=0; i< trails.length; i++) {
         if(trails[i].length <= length) {
-            if(trails[i].stars >= rating) {
-                if(difficultyDecider(difficulty) == trails[i].difficulty){
-                    filterTrails.add(trails[i])
-                }
+            if(difficultyDecider(difficulty) == trails[i].difficulty){
+                filterTrails.add(trails[i])
             }
         }
     } 
-    console.log(filteredTrails);
+    console.log("filtered: " + filteredTrails);
 
     return filteredTrails
 }
 
 function difficultyDecider(difficulty) {
+    console.log(difficulty)
     if(difficulty == "easy") {
         return "green";
     } else if (difficulty =="easy/inter") {
@@ -126,8 +131,6 @@ function getDistance(){ //the temporary 10 we have
 
     //add the distance to the trail object
 }
-
-//these two methods were returning a 403 error, but we might not even need them
 
 // function getTrailByID(ID){
 //     let url = "https://www.hikingproject.com/data/get-trails-by-id?key=" + trailKey
