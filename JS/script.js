@@ -7,12 +7,15 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    let distance = 10 //grab this from whever the distance is entered
+    var tempDistance = document.getElementById("userDistance").value;
+    let distance = parseInt(tempDistance); //grab this from whever the distance is entered
     var rating = document.getElementById("minimumRating").value;
+    var length = document.getElementById("distance").value;
+    var difficulty = document.getElementById("difficulty").value;
     console.log(rating); //filter by ratings
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating))
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating), String(length), String(difficulty))
     getWeather(String(position.coords.latitude), String(position.coords.longitude))
 }
     
@@ -62,7 +65,7 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 // conditionDetails: null
 // conditionDate: "1970-01-01 00:00:00"
 
-function getTrails(latitude, longitude, distance, minStars){
+function getTrails(latitude, longitude, distance, minStars, length, hardlevel){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
 
@@ -72,18 +75,59 @@ function getTrails(latitude, longitude, distance, minStars){
     .then(response => response.json())
     .then((data) => {
         console.log(data)
-        filterTrails(data)
+        //console.log(data.trails[0].id);
+        filterTrails(data.trails, length, minStars, hardlevel)
     })
     .catch((error) => console.log(error))
 }
 
-function filterTrails(trails, length, difficulty){
+function filterTrails(trails, length, rating, hardlevel){
     //filter trails based on given parameters
-
+    //all the trails, desired length of trail, rating, and desired difficulty
+    var filteredTrails;
+    for(var i=0; i< trails.length; i++) {
+        if(trails[i].length <= lengthFinder(length)) {
+            console.log(trails[i]);
+            if(trails[i].stars >= parseFloat(rating)) {
+                console.log(difficultyDecider(trails[i].difficulty));
+                console.log(hardlevel);
+            }
+        }
+    }
     //this method will have the trails 
+    console.log(filteredTrails);
 }
 
-function getDistance(){
+function lengthFinder(length) {
+    //length is a string, turn it into int
+    if (length == "short") {
+        return 5
+    }
+    else if(length == "medium") {
+        return 10
+    }
+    else {
+        return 20
+    }
+}
+
+function difficultyDecider(difficulty) {
+    if(difficulty == "green") {
+        return "easy";
+    } else if (difficulty =="greenBlue") {
+        return "easy/inter";
+    } else if (difficulty == "blue") {
+        return "inter";
+    } else if (difficulty == "blueBlack") {
+        return "inter/diff";
+    } else if (difficulty == "black") {
+        return "diff";
+    } else {
+        return "extreme";
+    }
+}
+
+function getDistance(){ //the temporary 10 we have
     //get distance between trail and user location
 
     //add the distance to the trail object
