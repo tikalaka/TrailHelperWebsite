@@ -7,10 +7,10 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var tempDistance = document.getElementById("userDistance").value;
+    var tempDistance = document.getElementById("distance").value;
     let distance = parseInt(tempDistance); //grab this from whever the distance is entered
     var rating = document.getElementById("minimumRating").value;
-    var length = document.getElementById("distance").value;
+    var length = document.getElementById("length").value;
     var difficulty = document.getElementById("difficulty").value;
     console.log(rating); //filter by ratings
     document.getElementById("latitude").value = position.coords.latitude
