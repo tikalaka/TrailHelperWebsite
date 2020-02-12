@@ -12,8 +12,8 @@
     <div id="aboveBar">
         <ul>
             <li><a href="index.html">Main</a></li>
-            <li><a href="">All Trails</a></li>
-            <li><a href="">About Page</a></li>
+            <li><a href="allTrails.html">All Trails</a></li>
+            <li><a href="about.html">About Page</a></li>
         </ul>
     </div>
     
@@ -28,29 +28,36 @@
             <input type="text" name="Longitude" id="longitude" placeholder="longitude"><br>
             <input type="text" name="Latitude" id="latitude" placeholder="latitude"><br><br>
             Difficulty:<br>
-            <input type="radio" name="difficulty" id="difficulty" value="easy" checked> Easy<br>
+            <input type="radio" name="difficulty" id="difficulty" value="easy"> Easy<br>
             <input type="radio" name="difficulty" id="difficulty" value="easy/inter"> Easy/ Intermediate<br>
             <input type="radio" name="difficulty" id="difficulty" value="inter"> Intermediate<br>
             <input type="radio" name="difficulty" id="difficulty" value="inter/diff"> Intermediate/ Difficult<br>
             <input type="radio" name="difficulty" id="difficulty" value="diff"> Difficult<br>
             <input type="radio" name="difficulty" id="difficulty" value="extreme"> Extremely Difficult<br><br>
-            Trail Length:<br>
-            <input type="number" min="1" name="distance" id="length"> Miles<br><br>
-            Distance:<br>
+            Trail Length (Max 200):<br>
+            <input type="number" min="1" name="distance" id="length" value="long"> Miles<br><br>
+            Distance From You:<br>
             <input type="number" min="1" name="userDistance" id="distance"> Miles<br><br>
             Minimum Rating:<br>
-            <input type="radio" name="minimumRatingButtons" id="minimumRating" value="0" checked> 0 Stars<br>
-            <input type="radio" name="minimumRatingButtons" id="minimumRating" value="1"> 1 Star<br>
-            <input type="radio" name="minimumRatingButtons" id="minimumRating" value="2"> 2 Stars<br>
-            <input type="radio" name="minimumRatingButtons" id="minimumRating" value="3"> 3 Stars<br>
-            <input type="radio" name="minimumRatingButtons" id="minimumRating" value="4"> 4 Stars<br><br>
-            <input id="specifyHikeButton" type="submit" value="Submit" onclick="getTrails(); return false">
+            <input type="radio" name="minimumRating" id="minimumRating" value="0"> 0 Stars<br>
+            <input type="radio" name="minimumRating" id="minimumRating" value="1"> 1 Star<br>
+            <input type="radio" name="minimumRating" id="minimumRating" value="2"> 2 Stars<br>
+            <input type="radio" name="minimumRating" id="minimumRating" value="3"> 3 Stars<br>
+            <input type="radio" name="minimumRating" id="minimumRating" value="4"> 4 Stars<br><br>
+            <input id="specifyHikeButton" type="submit" value="Submit" onclick="getLoocation()">
         </form>
     </div>
     
     <div id="mainContent" class="grid">
         <p>Welcome to HikeIT!</p>
+        <div>-----------------------------------------------------------------------------------------------------------------</div>
+        <div>
+          
 
+
+
+
+        </div>
     </div>
     
 

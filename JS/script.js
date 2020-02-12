@@ -10,24 +10,20 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    latitude = position.coords.latitude
-    longitude = position.coords.longitude
-    
-    document.getElementById("latitude").value = latitude
-    document.getElementById("longitude").value = longitude
-    
-    getTrails()
-    getWeather(String(latitude), String(longitude))
-}
-
-function getTrails(){
-    var distance = document.getElementById("distance").value;
-    var rating = document.getElementById("minimumRating").value;
-    var length = document.getElementById("length").value;
+    var tempDistance = document.getElementById("distance").value;
+    let distance = parseInt(tempDistance); //grab this from whever the distance is entered
+    var minRating;
+    var elements2 = document.getElementsByName("minimumRating");              
+        for(i = 0; i < elements2.length; i++) { 
+            if(elements2[i].checked) 
+            minRating = "" + elements2[i].value; 
+        }
+    var length = document.getElementById("distance").value;
     var difficulty = document.getElementById("difficulty").value;
-    console.log(distance + " " + rating + " " + length + " " + difficulty)
-
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating), String(length), String(difficulty))
+    document.getElementById("latitude").value = position.coords.latitude
+    document.getElementById("longitude").value = position.coords.longitude
+    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(minRating), String(length), String(difficulty))
+    getWeather(String(position.coords.latitude), String(position.coords.longitude))
 }
     
 function showError(error) {
@@ -78,7 +74,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 
 function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
+        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars + "&maxResults=15"            
+    console.log(url)
     
     fetch(proxyurl + url, {
         method: 'GET'

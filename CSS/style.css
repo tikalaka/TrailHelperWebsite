@@ -1,6 +1,6 @@
 body {
     background-image: url("../images/OtherForest.jpg");
-    background-size: cover;
+    background-size: cover, contain;
     background-repeat: no-repeat;
 }
 h1{
@@ -37,7 +37,7 @@ li a:hover {
     margin-top: 15px;
 }
 
-#mainContent {
+#mainContent, #trailInfo {
     border: 5px solid #855723;
     border-radius: 20px;
     background-color: #CDAA7D;
@@ -65,4 +65,8 @@ li a:hover {
 
 #specifyHikeButton {
     background-color: #fff8dc;
+}
+
+#trailInfo img {
+    float: right;
 }
