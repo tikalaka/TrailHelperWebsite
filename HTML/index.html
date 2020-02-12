@@ -6,7 +6,7 @@
     <link href='../CSS/style.css' rel='stylesheet' />
     <script src="../JS/script.js"></script>
 </head>
-<body onload="getLocation()">
+<body>
     <h1>HikeIT!</h1>
     
     <div id="aboveBar">
@@ -22,22 +22,26 @@
     </div>
 
     <div id="verticalLinks" class="grid">
-        <button onclick="getLocation()">Find My Location</button>
+        <button onclick="getLocation()">Find My Location</button><br><br>
         <form>
             <br>Location:<br>
             <input type="text" name="Longitude" id="longitude" placeholder="longitude"><br>
             <input type="text" name="Latitude" id="latitude" placeholder="latitude"><br><br>
             Difficulty:<br>
-            <input type="radio" name="difficulty" value="easy" checked> Easy<br>
-            <input type="radio" name="difficulty" value="easy/inter"> Easy/ Intermediate<br>
-            <input type="radio" name="difficulty" value="inter"> Intermediate<br>
-            <input type="radio" name="difficulty" value="inter/diff"> Intermediate/ Difficult<br>
-            <input type="radio" name="difficulty" value="diff"> Difficult<br>
-            <input type="radio" name="difficulty" value="extreme"> Extremely Difficult<br><br>
+            <input type="radio" name="difficulty" id="difficulty" value="easy" checked> Easy<br>
+            <input type="radio" name="difficulty" id="difficulty" value="easy/inter"> Easy/ Intermediate<br>
+            <input type="radio" name="difficulty" id="difficulty" value="inter"> Intermediate<br>
+            <input type="radio" name="difficulty" id="difficulty" value="inter/diff"> Intermediate/ Difficult<br>
+            <input type="radio" name="difficulty" id="difficulty" value="diff"> Difficult<br>
+            <input type="radio" name="difficulty" id="difficulty" value="extreme"> Extremely Difficult<br><br>
             Distance:<br>
-            <input type="radio" name="distance" value="short" checked> Short<br>
-            <input type="radio" name="distance" value="med"> Medium<br>
-            <input type="radio" name="distance" value="long"> Long<br><br>
+            <input type="radio" name="distance" id="distance" value="short" checked> Short<br>
+            <input type="radio" name="distance" id="distance" value="med"> Medium<br>
+            <input type="radio" name="distance" id="distance" value="long"> Long<br><br>
+            Distance Away:<br>
+            <input type="radio" name="userDistance" id="userDistance" value="5" checked> 5<br>
+            <input type="radio" name="userDistance" id="userDistance" value="10"> 10<br>
+            <input type="radio" name="userDistance" id="userDistance" value="15"> 15<br><br>
             Minimum Rating:<br>
             <input type="radio" name="minimumRatingButtons" id="minimumRating" value="0" checked> 0 Stars<br>
             <input type="radio" name="minimumRatingButtons" id="minimumRating" value="1"> 1 Star<br>
@@ -50,7 +54,6 @@
     
     <div id="mainContent" class="grid">
         <p>Welcome to HikeIT!</p>
-        <p>Click the button to get your coordinates.</p>
 
     </div>
     
