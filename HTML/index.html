@@ -35,7 +35,7 @@
             <input type="radio" name="difficulty" id="difficulty" value="diff"> Difficult<br>
             <input type="radio" name="difficulty" id="difficulty" value="extreme"> Extremely Difficult<br><br>
             Trail Length:<br>
-            <input type="number" min="1" name="distance" id="length" value="long"> Miles<br><br>
+            <input type="number" min="1" name="distance" id="length"> Miles<br><br>
             Distance:<br>
             <input type="number" min="1" name="userDistance" id="distance"> Miles<br><br>
             Minimum Rating:<br>
@@ -44,7 +44,7 @@
             <input type="radio" name="minimumRatingButtons" id="minimumRating" value="2"> 2 Stars<br>
             <input type="radio" name="minimumRatingButtons" id="minimumRating" value="3"> 3 Stars<br>
             <input type="radio" name="minimumRatingButtons" id="minimumRating" value="4"> 4 Stars<br><br>
-            <input id="specifyHikeButton" type="submit" value="Submit">
+            <input id="specifyHikeButton" type="submit" value="Submit" onclick="getLocation()">
         </form>
     </div>
     

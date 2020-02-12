@@ -10,16 +10,19 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var tempDistance = document.getElementById("distance").value;
-    let distance = parseInt(tempDistance); //grab this from whever the distance is entered
+    latitude = position.coords.latitude
+    longitude = position.coords.longitude
+
+    var distance = document.getElementById("distance").value;
     var rating = document.getElementById("minimumRating").value;
     var length = document.getElementById("length").value;
     var difficulty = document.getElementById("difficulty").value;
-    console.log(rating); //filter by ratings
-    document.getElementById("latitude").value = position.coords.latitude
-    document.getElementById("longitude").value = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(rating), String(length), String(difficulty))
-    getWeather(String(position.coords.latitude), String(position.coords.longitude))
+    
+    document.getElementById("latitude").value = latitude
+    document.getElementById("longitude").value = longitude
+
+    getTrails(String(latitude), String(longitude), String(distance), String(rating), String(length), String(difficulty))
+    getWeather(String(latitude), String(longitude))
 }
     
 function showError(error) {
@@ -68,7 +71,7 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 // conditionDetails: null
 // conditionDate: "1970-01-01 00:00:00"
 
-function getTrails(latitude, longitude, distance, minStars, length, hardlevel){
+function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
         + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars
     console.log(url)
@@ -79,53 +82,40 @@ function getTrails(latitude, longitude, distance, minStars, length, hardlevel){
     .then(response => response.json())
     .then((data) => {
         console.log(data)
-        //console.log(data.trails[0].id);
-        filterTrails(data.trails, length, minStars, hardlevel)
+
+        filterTrails(data.trails, length, minStars, difficulty)
     })
     .catch((error) => console.log(error))
 }
 
-function filterTrails(trails, length, rating, hardlevel){
-    //filter trails based on given parameters
-    //all the trails, desired length of trail, rating, and desired difficulty
-    var filteredTrails;
+function filterTrails(trails, length, rating, difficulty){
+    var filteredTrails
+
     for(var i=0; i< trails.length; i++) {
-        if(trails[i].length <= lengthFinder(length)) {
-            console.log(trails[i]);
-            if(trails[i].stars >= parseFloat(rating)) {
-                console.log(difficultyDecider(trails[i].difficulty));
-                console.log(hardlevel);
+        if(trails[i].length <= length) {
+            if(trails[i].stars >= rating) {
+                if(difficultyDecider(difficulty) == trails[i].difficulty){
+                    filterTrails.add(trails[i])
+                }
             }
         }
-    }
-    //this method will have the trails 
+    } 
     console.log(filteredTrails);
-}
 
-function lengthFinder(length) {
-    //length is a string, turn it into int
-    if (length == "short") {
-        return 5
-    }
-    else if(length == "medium") {
-        return 10
-    }
-    else {
-        return 20
-    }
+    return filteredTrails
 }
 
 function difficultyDecider(difficulty) {
-    if(difficulty == "green") {
-        return "easy";
-    } else if (difficulty =="greenBlue") {
-        return "easy/inter";
-    } else if (difficulty == "blue") {
-        return "inter";
-    } else if (difficulty == "blueBlack") {
-        return "inter/diff";
-    } else if (difficulty == "black") {
-        return "diff";
+    if(difficulty == "easy") {
+        return "green";
+    } else if (difficulty =="easy/inter") {
+        return "greenBlue";
+    } else if (difficulty == "inter") {
+        return "blue";
+    } else if (difficulty == "inter/diff") {
+        return "blueBlack";
+    } else if (difficulty == "diff") {
+        return "black";
     } else {
         return "extreme";
     }
