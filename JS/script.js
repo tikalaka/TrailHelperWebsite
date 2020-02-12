@@ -13,10 +13,10 @@ function showPosition(position) {
     var tempDistance = document.getElementById("userDistance").value;
     let distance = parseInt(tempDistance); //grab this from whever the distance is entered
     var minRating;
-    var ele = document.getElementsByName("minimumRating");              
-        for(i = 0; i < ele.length; i++) { 
-            if(ele[i].checked) 
-            minRating = "" + ele[i].value; 
+    var elements2 = document.getElementsByName("minimumRating");              
+        for(i = 0; i < elements2.length; i++) { 
+            if(elements2[i].checked) 
+            minRating = "" + elements2[i].value; 
         }
     var length = document.getElementById("distance").value;
     var difficulty = document.getElementById("difficulty").value;
