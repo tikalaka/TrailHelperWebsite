@@ -10,7 +10,7 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var tempDistance = document.getElementById("userDistance").value;
+    var tempDistance = document.getElementById("distance").value;
     let distance = parseInt(tempDistance); //grab this from whever the distance is entered
     var minRating;
     var elements2 = document.getElementsByName("minimumRating");              
