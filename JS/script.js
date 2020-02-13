@@ -10,16 +10,21 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var tempDistance = document.getElementById("distance").value;
-    let distance = parseInt(tempDistance); //grab this from whever the distance is entered
+    var distance = document.getElementById("distance").value;
     var minRating;
     var elements2 = document.getElementsByName("minimumRating");              
         for(i = 0; i < elements2.length; i++) { 
             if(elements2[i].checked) 
             minRating = "" + elements2[i].value; 
         }
-    var length = document.getElementById("distance").value;
-    var difficulty = document.getElementById("difficulty").value;
+    var length = document.getElementById("length").value;
+    var difficulty;
+    var elements3 = document.getElementsByName("difficulty");
+        for(i = 0; i < elements3.length; i++){
+            if(elements3[i].checked){
+                difficulty = "" + difficultyDecider(elements3[i].value)
+            }
+        }
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
     getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(minRating), String(length), String(difficulty))
@@ -74,43 +79,37 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 
 function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars + "&maxResults=15"            
-    console.log(url)
-    
+        + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars // + "&maxResults=15"            
+
     fetch(proxyurl + url, {
         method: 'GET'
     })
     .then(response => response.json())
     .then((data) => {
-        console.log(data)
-
-        filterTrails(data.trails, length, minStars, difficulty)
+        filterTrails(data.trails, length, difficulty)
     })
     .catch((error) => console.log(error))
 }
 
 function filterTrails(trails, length, difficulty){
-    var filteredTrails
-
-    console.log("FILTER BY: trails: " + trails + " length: " + length + " difficulty: " + difficulty )
+    filteredTrails = []
 
     for(var i=0; i< trails.length; i++) {
         if(trails[i].length <= length) {
-            if(difficultyDecider(difficulty) == trails[i].difficulty){
-                filterTrails.add(trails[i])
+            if(trails[i].difficulty == difficulty){
+                console.log(trails[i])
+                filteredTrails.push(trails[i])
             }
         }
-    } 
-    console.log("filtered: " + filteredTrails);
+    }
 
     return filteredTrails
 }
 
 function difficultyDecider(difficulty) {
-    console.log(difficulty)
     if(difficulty == "easy") {
         return "green";
-    } else if (difficulty =="easy/inter") {
+    } else if (difficulty == "easy/inter") {
         return "greenBlue";
     } else if (difficulty == "inter") {
         return "blue";
