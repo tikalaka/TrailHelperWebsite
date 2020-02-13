@@ -16,11 +16,22 @@ function getTrail() {
     .then(response => response.json())
     .then(data => {
         console.log(data.trails[0]);
-        console.log(trailHead(data.trails[0]));
+        document.getElementById("trailName").innerHTML = data.trails[0].name;
+        document.getElementById("type").innerHTML = "Type: " + data.trails[0].type;
+        document.getElementById("summary").innerHTML = data.trails[0].summary;
+        document.getElementById("difficulty").innerHTML = data.trails[0].difficulty;
+        document.getElementById("stars").innerHTML = data.trails[0].stars;
+        document.getElementById("location").innerHTML = data.trails[0].location;
+        document.getElementById("image").src = data.trails[0].imgSmall;
+        document.getElementById("length").innerHTML = data.trails[0].length + " miles";
+        document.getElementById("ascent/elevation").innerHTML = data.trails[0].ascent + " feet";
+        document.getElementById("conditionStatus").innerHTML = data.trails[0].conditionStatus;
+        document.getElementById("conditionDetails").innerHTML = data.trails[0].conditionDetails;
+        document.getElementById("conditionDate").innerHTML = data.trails[0].conditionDate;
     })
     .catch((error) => console.log(error))
 }
 
 function trailHead(trailInfo) {
-    document.getElementById("trailName").innerHTML = "trailHead";
+    document.getElementById("trailName").innerHTML = trailInfo.name;
 }
