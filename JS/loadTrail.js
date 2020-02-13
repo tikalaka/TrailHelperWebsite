@@ -17,7 +17,7 @@ function getTrail() {
     .then(data => {
         console.log(data.trails[0]);
         document.getElementById("trailName").innerHTML = data.trails[0].name;
-        document.getElementById("type").innerHTML = data.trails[0].type;
+        document.getElementById("type").innerHTML = "Type: " + data.trails[0].type;
         document.getElementById("summary").innerHTML = data.trails[0].summary;
         document.getElementById("difficulty").innerHTML = data.trails[0].difficulty;
         document.getElementById("stars").innerHTML = data.trails[0].stars;

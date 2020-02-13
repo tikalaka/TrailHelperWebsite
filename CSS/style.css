@@ -69,4 +69,8 @@ li a:hover {
 
 #trailInfo img {
     float: right;
+    margin-right: 30px;
+    border-color: darkolivegreen;
+    border-width: 5px;
+    border-style: solid;
 }
