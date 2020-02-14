@@ -31,7 +31,3 @@ function getTrail() {
     })
     .catch((error) => console.log(error))
 }
-
-function trailHead(trailInfo) {
-    document.getElementById("trailName").innerHTML = trailInfo.name;
-}
