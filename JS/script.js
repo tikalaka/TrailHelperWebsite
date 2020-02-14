@@ -86,6 +86,7 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     })
     .then(response => response.json())
     .then((data) => {
+        console.log(data);
         filterTrails(data.trails, length, difficulty)
     })
     .catch((error) => console.log(error))
@@ -169,11 +170,11 @@ function getWeather(latitude, longitude) {
             document.getElementById("day3Icon").src = `../images/icons/` + data.data[2].weather.icon + ".png";
             document.getElementById("day4Icon").src = `../images/icons/` + data.data[3].weather.icon + ".png";
             document.getElementById("day5Icon").src = `../images/icons/` + data.data[4].weather.icon + ".png";
-            document.getElementById("temp1").innerHTML = data.data[0].temp + "° F"
-            document.getElementById("temp2").innerHTML = data.data[1].temp + "° F"
-            document.getElementById("temp3").innerHTML = data.data[2].temp + "° F"
-            document.getElementById("temp4").innerHTML = data.data[3].temp + "° F"
-            document.getElementById("temp5").innerHTML = data.data[4].temp + "° F"
+            document.getElementById("temp1").innerHTML = data.data[0].temp + "ï¿½ F"
+            document.getElementById("temp2").innerHTML = data.data[1].temp + "ï¿½ F"
+            document.getElementById("temp3").innerHTML = data.data[2].temp + "ï¿½ F"
+            document.getElementById("temp4").innerHTML = data.data[3].temp + "ï¿½ F"
+            document.getElementById("temp5").innerHTML = data.data[4].temp + "ï¿½ F"
             document.getElementById("des1").innerHTML = data.data[0].weather.description;
             document.getElementById("des2").innerHTML = data.data[1].weather.description;
             document.getElementById("des3").innerHTML = data.data[2].weather.description;
