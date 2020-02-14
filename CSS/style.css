@@ -1,6 +1,6 @@
 body {
     background-image: url("../images/OtherForest.jpg");
-    background-size: cover;
+    background-size: cover, contain;
     background-repeat: no-repeat;
 }
 h1{
@@ -37,13 +37,13 @@ li a:hover {
     margin-top: 15px;
 }
 
-#mainContent {
+#mainContent, #trailInfo {
     border: 5px solid #855723;
     border-radius: 20px;
     background-color: #CDAA7D;
     background-color: #DEB887;
     width: 60%;
-    height: 600px;
+    min-height: 600px;
     margin-left: 20px;
     padding: 20px;
     font-size: 20px;
@@ -67,7 +67,7 @@ li a:hover {
     background-color: #fff8dc;
 }
 
-img {
+#day1 img, #day2 img, #day3 img, #day4 img, #day5 img {
     width: 50px;
     height: 50px;
     margin-right: 20px;
@@ -90,4 +90,12 @@ img {
 #day1 h4, #day2 h4, #day3 h4, #day4 h4, #day5 h4 {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+#trailInfo img {
+    float: right;
+    margin-right: 30px;
+    border-color: darkolivegreen;
+    border-width: 5px;
+    border-style: solid;
 }
