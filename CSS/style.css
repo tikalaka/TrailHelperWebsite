@@ -68,11 +68,26 @@ li a:hover {
 }
 
 img {
-    float:right;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    float:left;
 }
 
 #day1, #day2, #day3, #day4, #day5 {
     float: right;
+    visibility:hidden;
+    width: 200px;
+    height: 100px;
+    
+}
+
+#day1 p, #day2 p, #day3 p, #day4 p, #day5 p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#day1 h4, #day2 h4, #day3 h4, #day4 h4, #day5 h4 {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

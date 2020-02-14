@@ -169,41 +169,36 @@ function getDistance(){ //the temporary 10 we have
 
 function getWeather(latitude, longitude) {
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&units=I&key=65ed0458f53149b6b28e74556c9ec0bf`;
-    let icon1 = document.getElementById("day1Icon");
-    let icon2 = document.getElementById("day2Icon");
-    let icon3 = document.getElementById("day3Icon");
-    let icon4 = document.getElementById("day4Icon");
-    let icon5 = document.getElementById("day5Icon");
-    let temp1 = document.getElementById("temp1");
-    let temp2 = document.getElementById("temp2");
-    let temp3 = document.getElementById("temp3");
-    let temp4 = document.getElementById("temp4");
-    let temp5 = document.getElementById("temp5");
-    let des1 = document.getElementById("des1");
-    let des2 = document.getElementById("des2");
-    let des3 = document.getElementById("des3");
-    let des4 = document.getElementById("des4");
-    let des5 = document.getElementById("des5");
     fetch(url, {
         method: 'GET'
     })
         .then(response => response.json())
         .then((data) => {
-            icon1.src = `../images/icons/` + data.data[0].weather.icon + ".png";
-            icon2.src = `../images/icons/` + data.data[1].weather.icon + ".png";
-            icon3.src = `../images/icons/` + data.data[2].weather.icon + ".png";
-            icon4.src = `../images/icons/` + data.data[3].weather.icon + ".png";
-            icon5.src = `../images/icons/` + data.data[4].weather.icon + ".png";
-            temp1.innerHTML = data.data[0].temp + "° F"
-            temp2.innerHTML = data.data[1].temp + "° F"
-            temp3.innerHTML = data.data[2].temp + "° F"
-            temp4.innerHTML = data.data[3].temp + "° F"
-            temp5.innerHTML = data.data[4].temp + "° F"
-            des1.innerHTML = data.data[0].weather.description;
-            des2.innerHTML = data.data[1].weather.description;
-            des3.innerHTML = data.data[2].weather.description;
-            des4.innerHTML = data.data[3].weather.description;
-            des5.innerHTML = data.data[4].weather.description;
+            document.getElementById("day1Icon").src = `../images/icons/` + data.data[0].weather.icon + ".png";
+            document.getElementById("day2Icon").src = `../images/icons/` + data.data[1].weather.icon + ".png";
+            document.getElementById("day3Icon").src = `../images/icons/` + data.data[2].weather.icon + ".png";
+            document.getElementById("day4Icon").src = `../images/icons/` + data.data[3].weather.icon + ".png";
+            document.getElementById("day5Icon").src = `../images/icons/` + data.data[4].weather.icon + ".png";
+            document.getElementById("temp1").innerHTML = data.data[0].temp + "° F"
+            document.getElementById("temp2").innerHTML = data.data[1].temp + "° F"
+            document.getElementById("temp3").innerHTML = data.data[2].temp + "° F"
+            document.getElementById("temp4").innerHTML = data.data[3].temp + "° F"
+            document.getElementById("temp5").innerHTML = data.data[4].temp + "° F"
+            document.getElementById("des1").innerHTML = data.data[0].weather.description;
+            document.getElementById("des2").innerHTML = data.data[1].weather.description;
+            document.getElementById("des3").innerHTML = data.data[2].weather.description;
+            document.getElementById("des4").innerHTML = data.data[3].weather.description;
+            document.getElementById("des5").innerHTML = data.data[4].weather.description;
+            document.getElementById("date1").innerHTML = new Date("2020-02-15");data.data[0].valid_date;
+            document.getElementById("date2").innerHTML = data.data[1].dateTime;
+            document.getElementById("date3").innerHTML = data.data[2].valid_date;
+            document.getElementById("date4").innerHTML = data.data[3].valid_date;
+            document.getElementById("date5").innerHTML = data.data[4].valid_date;
         })
         .catch((error) => console.log(error))
+    document.getElementById("day1").style.visibility = "visible";
+    document.getElementById("day2").style.visibility = "visible";
+    document.getElementById("day3").style.visibility = "visible";
+    document.getElementById("day4").style.visibility = "visible";
+    document.getElementById("day5").style.visibility = "visible";
 }
