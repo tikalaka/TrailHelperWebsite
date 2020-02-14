@@ -87,6 +87,13 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     .then(response => response.json())
     .then((data) => {
         console.log(data);
+        var x = document.getElementById("trailName1");
+        var y = document.getElementById("trailLength1");
+        var z = document.getElementById("trailStars1");
+        x.innerHTML = data.trails[0].name
+        y.innerHTML = data.trails[0].length;
+        z.innerHTML = data.trails[0].stars;
+
         filterTrails(data.trails, length, difficulty)
     })
     .catch((error) => console.log(error))

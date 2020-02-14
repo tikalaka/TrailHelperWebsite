@@ -42,6 +42,10 @@ pre {
     font-family: 'Times New Roman', Times, serif;
 }
 
+#tenTrailsList{
+    overflow: auto;
+}
+
 #mainContent, #trailInfo {
     border: 5px solid #855723;
     border-radius: 20px;
