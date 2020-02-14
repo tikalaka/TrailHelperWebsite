@@ -33,10 +33,6 @@ function getTrail() {
     .catch((error) => console.log(error))
 }
 
-function trailHead(trailInfo) {
-    document.getElementById("trailName").innerHTML = trailInfo.name;
-}
-
 function getWeather(latitude, longitude) {
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&units=I&key=65ed0458f53149b6b28e74556c9ec0bf`;
     fetch(url, {
@@ -50,11 +46,11 @@ function getWeather(latitude, longitude) {
             document.getElementById("day3Icon").src = `../images/icons/` + data.data[2].weather.icon + ".png";
             document.getElementById("day4Icon").src = `../images/icons/` + data.data[3].weather.icon + ".png";
             document.getElementById("day5Icon").src = `../images/icons/` + data.data[4].weather.icon + ".png";
-            document.getElementById("temp1").innerHTML = data.data[0].temp + "° F"
-            document.getElementById("temp2").innerHTML = data.data[1].temp + "° F"
-            document.getElementById("temp3").innerHTML = data.data[2].temp + "° F"
-            document.getElementById("temp4").innerHTML = data.data[3].temp + "° F"
-            document.getElementById("temp5").innerHTML = data.data[4].temp + "° F"
+            document.getElementById("temp1").innerHTML = data.data[0].temp + "ï¿½ F"
+            document.getElementById("temp2").innerHTML = data.data[1].temp + "ï¿½ F"
+            document.getElementById("temp3").innerHTML = data.data[2].temp + "ï¿½ F"
+            document.getElementById("temp4").innerHTML = data.data[3].temp + "ï¿½ F"
+            document.getElementById("temp5").innerHTML = data.data[4].temp + "ï¿½ F"
             document.getElementById("des1").innerHTML = data.data[0].weather.description;
             document.getElementById("des2").innerHTML = data.data[1].weather.description;
             document.getElementById("des3").innerHTML = data.data[2].weather.description;

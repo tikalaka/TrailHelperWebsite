@@ -29,12 +29,17 @@ a {
 }
 li a:hover {
     background-color: #cc9966;
+    border-radius: 3px;
 }
 
 .grid {
     display: inline-block;
     vertical-align: top;
     margin-top: 15px;
+}
+
+pre {
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #mainContent, #trailInfo {
@@ -47,6 +52,13 @@ li a:hover {
     margin-left: 20px;
     padding: 20px;
     font-size: 20px;
+}
+
+#trailInfo {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
 }
 
 #verticalLinks {
