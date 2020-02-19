@@ -54,7 +54,6 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 
 //RETURNS AN ARRAY OF TRAILS:
-
     // id: 7017456
     // name: "The Living Room"
     // type: "Hike"
@@ -89,13 +88,14 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
             .then(response => response.json())
             .then((data) => {
         console.log(data);
-        let filteredTrails = filterTrails(data.trails, length, difficulty);
-        for (let i = 0; i < filteredTrails.length; i++) {
-            document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i].id;
-            document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i].name
-            document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
-            document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
-            document.getElementById("trail" + (i + 1)).style.visibility = "visible";
+            let filteredTrails = filterTrails(data.trails, length, difficulty);
+            for (let i = 0; i < filteredTrails.length; i++) {
+                console.log("Thing needs to happen")
+                document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i].id;
+                document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i].name
+                document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
+                document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
+                document.getElementById("trail" + (i + 1)).style.visibility = "visible";
         }
             })
             .catch((error) => console.log(error))
@@ -103,14 +103,13 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 
     function filterTrails(trails, length, difficulty, userDistance) {
         filteredTrails = []
-
-        console.clear()
-
         for (var i = 0; i < trails.length; i++) {
-            if (trails[i].length <= length) {
-                if (trails[i].difficulty == difficulty) {
+            if (trails[i].length <= length || length == "") {
+                console.log("test1")
+                if (trails[i].difficulty == difficulty || difficulty == "undefined") {
+                    console.log("test2")
                     if (getDistance(Number(latitude1), Number(longitude1),
-                        Number(trails[i].latitude), Number(trails[i].longitude)) <= userDistance) {
+                        Number(trails[i].latitude), Number(trails[i].longitude)) <= userDistance || userDistance == undefined) {
 
                         console.log(trails[i])
                         filteredTrails.push(trails[i])
@@ -118,19 +117,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
                 }
             }
         }
-
+        return filteredTrails
     }
-    for(var i=0; i< trails.length; i++) {
-        if(trails[i].length <= length || length == "") {
-            if(trails[i].difficulty == difficulty || difficulty == "undefined"){
-                console.log(trails[i])
-                filteredTrails.push(trails[i])
-            }
-        }
-    }
-
-    return filteredTrails
-}
 
 function difficultyDecider(difficulty) {
     if(difficulty == "easy") {
@@ -148,39 +136,65 @@ function difficultyDecider(difficulty) {
     }
 }
 
-function getDistance(){ //the temporary 10 we have
+function getDistance(latitude, longitude, destinationLatitude, destinationLongitude) { //the temporary 10 we have
     //get distance between trail and user location
+    let distanceLatitude
+    let distanceLongitude
+    let finalDistance
 
-    //add the distance to the trail object
+    //console.log(latitude)
+    //console.log(longitude)
+    // console.log(destinationLatitude)
+    // console.log(destinationLongitude)
+
+
+    if (latitude < 0) {
+        latitude *= -1
+    }
+    if (longitude < 0) {
+        longitude *= -1
+
+    }
+    if (destinationLatitude < 0) {
+        destinationLatitude *= -1
+    }
+    if (destinationLongitude < 0) {
+        destinationLongitude *= -1
+    }
+
+    // console.log(latitude)
+    // console.log(longitude)
+    // console.log(destinationLatitude)
+    // console.log(destinationLongitude)
+
+    distanceLatitude = latitude - destinationLatitude
+    distanceLongitude = longitude - destinationLongitude
+
+    // console.log(distanceLatitude)
+    // console.log(distanceLongitude)
+
+    if (distanceLatitude < 0) {
+        distanceLatitude *= -1
+    }
+    if (distanceLongitude < 0) {
+        distanceLongitude *= -1
+    }
+
+    // console.log(distanceLatitude)
+    // console.log(distanceLongitude)
+
+    finalDistance = Math.sqrt(Math.pow(distanceLatitude, 2)
+        + Math.pow(distanceLongitude, 2))
+
+    // console.log(finalDistance)
+
+    finalDistance *= 69
+
+    console.log(finalDistance)
+
+    return finalDistance
+
 }
-
-    // function getTrailByID(ID){
-    //     let url = "https://www.hikingproject.com/data/get-trails-by-id?key=" + trailKey
-    //         + "&ids" + ID
-
-    //     fetch(proxyurl + url, {
-    //         method: 'GET'
-    //     })
-    //     .then(response => response.json())
-    //     .then((data) => {
-    //         console.log(data)
-    //     })
-    //     .catch((error) => console.log(error))
-    // }
-
-    // function getTrailConditions(ID){
-    //     let url = "https://www.hikingproject.com/data/get-conditions?key=" + trailKey
-    //         + "&ids" + ID
-
-    //     fetch(proxyurl + url, {
-    //         method: 'GET'
-    //     })
-    //     .then(response => response.json())
-    //     .then((data) => {
-    //         console.log(data)
-    //     })
-    //     .catch((error) => console.log(error))
-    // }
 
     function getWeather(latitude, longitude) {
         let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&units=I&key=65ed0458f53149b6b28e74556c9ec0bf`;
@@ -218,3 +232,4 @@ function getDistance(){ //the temporary 10 we have
         document.getElementById("day4").style.visibility = "visible";
         document.getElementById("day5").style.visibility = "visible";
     }
+
