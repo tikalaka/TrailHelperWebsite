@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-let hikingRequest = new XMLHttpRequest();
-let hikingApiKey = "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200677137-6e8b5ee50a5384f5345b725c87e612d6"
-let weatherRequest = new XMLHttpRequest();
-let weatherApiKey = "http://api.openweathermap.org/data/2.5/forecast?lat=40.77&lon=-111.89&APPID=afa86f15fba51be4a824216fa51fa47c"
-
-=======
-var latitude1 = 0
-var longitude1 = 0
-=======
 var latitude = 0
 var longitude = 0
->>>>>>> master
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -39,15 +27,8 @@ function showPosition(position) {
         }
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
-<<<<<<< HEAD
-    latitude1 = position.coords.latitude
-    longitude1 = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(minRating), String(length), String(difficulty))
-    getWeather(String(position.coords.latitude), String(position.coords.longitude))    
-=======
     getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(minRating), String(length), String(difficulty))
     getWeather(String(position.coords.latitude), String(position.coords.longitude))
->>>>>>> master
 }
     
 function showError(error) {
@@ -66,34 +47,12 @@ function showError(error) {
             break;
     }
 }
-<<<<<<< HEAD
->>>>>>> Stashed changes
-
-loadData();
-
-function loadData() {
-    // Get your own API key from OpenWeatherMap.org rather than using the demo one I use here in the 'appid'.
-    // hikingRequest.open('GET', 'http://api.openweathermap.org/data/2.5/forecast/daily?q=Salt+Lake+City,us&units=imperial&cnt=5&appid=846d3b48355b6e95813bed8fb29f0fb3');
-
-<<<<<<< Updated upstream
-
-    hikingRequest.open('GET', hikingApiKey);
-    hikingRequest.onload = loadComplete;
-    hikingRequest.send();
-	
-	weatherRequest.open('GET', weatherApiKey);
-    weatherRequest.onload = loadComplete;
-    weatherRequest.send();
-
-=======
-=======
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 
 //RETURNS AN ARRAY OF TRAILS:
 
->>>>>>> master
 // id: 7017456
 // name: "The Living Room"
 // type: "Hike"
@@ -127,10 +86,6 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     })
     .then(response => response.json())
     .then((data) => {
-<<<<<<< HEAD
-        filterTrails(data.trails, length, difficulty, distance)
-        console.log(data)
-=======
         console.log(data);
         let filteredTrails = filterTrails(data.trails, length, difficulty);
         for (let i = 0; i < filteredTrails.length; i++) {
@@ -140,105 +95,10 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
             document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
             document.getElementById("trail" + (i + 1)).style.visibility = "visible";
         }
->>>>>>> master
     })
     .catch((error) => console.log(error))
 }
 
-<<<<<<< HEAD
-function filterTrails(trails, length, difficulty, userDistance){
-    filteredTrails = []
-
-    console.clear()
-
-    for(var i=0; i< trails.length; i++) {
-        if(trails[i].length <= length) {
-            if(trails[i].difficulty == difficulty){
-                if(getDistance(Number(latitude1), Number(longitude1),
-                Number(trails[i].latitude), Number(trails[i].longitude)) <= userDistance){
-
-                console.log(trails[i])
-                filteredTrails.push(trails[i])
-                }
-            }
-        }
-    }
->>>>>>> Stashed changes
-
-}
-
-function loadComplete(evt) {
-    hikingData = JSON.parse(hikingRequest.responseText);
-    console.log(hikingData);
-
-<<<<<<< Updated upstream
-    weatherData = JSON.parse(weatherRequest.responseText);
-    console.log(weatherData);
-=======
-function getDistance(latitude, longitude, destinationLatitude, destinationLongitude){ //the temporary 10 we have
-    //get distance between trail and user location
-    let distanceLatitude
-    let distanceLongitude
-    let finalDistance
-
-    console.log(latitude)
-    console.log(longitude)
-    // console.log(destinationLatitude)
-    // console.log(destinationLongitude)
-
-
-    if(latitude < 0){
-        latitude *= -1
-    }
-    if(longitude < 0){
-        longitude *= -1
-        
-    }
-    if(destinationLatitude < 0){
-        destinationLatitude *= -1
-    }
-    if(destinationLongitude < 0){
-        destinationLongitude *= -1
-    }
-
-    // console.log(latitude)
-    // console.log(longitude)
-    // console.log(destinationLatitude)
-    // console.log(destinationLongitude)
-
-    distanceLatitude = latitude - destinationLatitude
-    distanceLongitude = longitude - destinationLongitude
-
-    // console.log(distanceLatitude)
-    // console.log(distanceLongitude)
-
-    if(distanceLatitude < 0){
-        distanceLatitude *= -1
-    }
-    if(distanceLongitude < 0){
-        distanceLongitude *= -1
-    }
-
-    // console.log(distanceLatitude)
-    // console.log(distanceLongitude)
-
-    finalDistance = Math.sqrt(Math.pow(distanceLatitude, 2) 
-    + Math.pow(distanceLongitude, 2))
-
-    // console.log(finalDistance)
-
-    finalDistance *= 69
-
-    console.log(finalDistance)
-
-    return finalDistance
-
->>>>>>> Stashed changes
-
-}
-<<<<<<< Updated upstream
-=======
-=======
 function filterTrails(trails, length, difficulty){
     filteredTrails = []
 
@@ -275,7 +135,6 @@ function getDistance(){ //the temporary 10 we have
 
     //add the distance to the trail object
 }
->>>>>>> master
 
 // function getTrailByID(ID){
 //     let url = "https://www.hikingproject.com/data/get-trails-by-id?key=" + trailKey
@@ -318,19 +177,11 @@ function getWeather(latitude, longitude) {
             document.getElementById("day3Icon").src = `../images/icons/` + data.data[2].weather.icon + ".png";
             document.getElementById("day4Icon").src = `../images/icons/` + data.data[3].weather.icon + ".png";
             document.getElementById("day5Icon").src = `../images/icons/` + data.data[4].weather.icon + ".png";
-<<<<<<< HEAD
-            document.getElementById("temp1").innerHTML = data.data[0].temp + "° F"
-            document.getElementById("temp2").innerHTML = data.data[1].temp + "° F"
-            document.getElementById("temp3").innerHTML = data.data[2].temp + "° F"
-            document.getElementById("temp4").innerHTML = data.data[3].temp + "° F"
-            document.getElementById("temp5").innerHTML = data.data[4].temp + "° F"
-=======
             document.getElementById("temp1").innerHTML = data.data[0].temp + "&#176 F"
             document.getElementById("temp2").innerHTML = data.data[1].temp + "&#176 F"
             document.getElementById("temp3").innerHTML = data.data[2].temp + "&#176 F"
             document.getElementById("temp4").innerHTML = data.data[3].temp + "&#176 F"
             document.getElementById("temp5").innerHTML = data.data[4].temp + "&#176 F"
->>>>>>> master
             document.getElementById("des1").innerHTML = data.data[0].weather.description;
             document.getElementById("des2").innerHTML = data.data[1].weather.description;
             document.getElementById("des3").innerHTML = data.data[2].weather.description;
@@ -348,11 +199,4 @@ function getWeather(latitude, longitude) {
     document.getElementById("day3").style.visibility = "visible";
     document.getElementById("day4").style.visibility = "visible";
     document.getElementById("day5").style.visibility = "visible";
-<<<<<<< HEAD
 }
-
-
->>>>>>> Stashed changes
-=======
-}
->>>>>>> master
