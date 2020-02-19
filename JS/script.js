@@ -87,14 +87,14 @@ function getTrails(latitude, longitude, distance, minStars, length, difficulty){
     .then(response => response.json())
     .then((data) => {
         console.log(data);
-        var x = document.getElementById("trailName1");
-        var y = document.getElementById("trailLength1");
-        var z = document.getElementById("trailStars1");
-        x.innerHTML = data.trails[0].name
-        y.innerHTML = data.trails[0].length;
-        z.innerHTML = data.trails[0].stars;
-
-        filterTrails(data.trails, length, difficulty)
+        let filteredTrails = filterTrails(data.trails, length, difficulty);
+        for (let i = 0; i < filteredTrails.length; i++) {
+            document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i].id;
+            document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i].name
+            document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
+            document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
+            document.getElementById("trail" + (i + 1)).style.visibility = "visible";
+        }
     })
     .catch((error) => console.log(error))
 }
@@ -103,8 +103,8 @@ function filterTrails(trails, length, difficulty){
     filteredTrails = []
 
     for(var i=0; i< trails.length; i++) {
-        if(trails[i].length <= length) {
-            if(trails[i].difficulty == difficulty){
+        if(trails[i].length <= length || length == "") {
+            if(trails[i].difficulty == difficulty || difficulty == "undefined"){
                 console.log(trails[i])
                 filteredTrails.push(trails[i])
             }
@@ -177,11 +177,11 @@ function getWeather(latitude, longitude) {
             document.getElementById("day3Icon").src = `../images/icons/` + data.data[2].weather.icon + ".png";
             document.getElementById("day4Icon").src = `../images/icons/` + data.data[3].weather.icon + ".png";
             document.getElementById("day5Icon").src = `../images/icons/` + data.data[4].weather.icon + ".png";
-            document.getElementById("temp1").innerHTML = data.data[0].temp + "� F"
-            document.getElementById("temp2").innerHTML = data.data[1].temp + "� F"
-            document.getElementById("temp3").innerHTML = data.data[2].temp + "� F"
-            document.getElementById("temp4").innerHTML = data.data[3].temp + "� F"
-            document.getElementById("temp5").innerHTML = data.data[4].temp + "� F"
+            document.getElementById("temp1").innerHTML = data.data[0].temp + "&#176 F"
+            document.getElementById("temp2").innerHTML = data.data[1].temp + "&#176 F"
+            document.getElementById("temp3").innerHTML = data.data[2].temp + "&#176 F"
+            document.getElementById("temp4").innerHTML = data.data[3].temp + "&#176 F"
+            document.getElementById("temp5").innerHTML = data.data[4].temp + "&#176 F"
             document.getElementById("des1").innerHTML = data.data[0].weather.description;
             document.getElementById("des2").innerHTML = data.data[1].weather.description;
             document.getElementById("des3").innerHTML = data.data[2].weather.description;
