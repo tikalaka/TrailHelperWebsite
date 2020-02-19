@@ -47,7 +47,8 @@ pre {
     border-radius: 20px;
     background-color: #CDAA7D;
     background-color: #DEB887;
-    width: 60%;
+    width: auto;
+    min-width: 75%;
     min-height: 600px;
     margin-left: 20px;
     padding: 20px;
