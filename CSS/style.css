@@ -1,46 +1,124 @@
 body {
     background-image: url("../images/OtherForest.jpg");
-    background-size: cover;
+    background-size: cover, contain;
+    background-repeat: no-repeat;
 }
 h1{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: xx-large;
+    font-size: 50px;
+    color: rgb(92, 92, 17);
+
+}
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+li {
+    float: left;
+    padding: 8px;
+    border-right: 1px solid #855723;
+}
+li:last-child {
+    border-right: none;
+}
+a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 2px;
+}
+li a:hover {
+    background-color: #cc9966;
+    border-radius: 3px;
 }
 
-#mainContent {
+.grid {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 15px;
+}
+
+pre {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#tenTrailsList{
+    overflow: auto;
+}
+
+#mainContent, #trailInfo {
     border: 5px solid #855723;
-    border-radius: 30px;
-    /* background-color: #CDAA7D; */
+    border-radius: 20px;
+    background-color: #CDAA7D;
     background-color: #DEB887;
-    width: 50%;
-    height: 80%;
-    left: 35%;
-    top: 10%;
-    position: absolute;
+    width: auto;
+    min-width: 75%;
+    min-height: 600px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#trailInfo {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
 }
 
 #verticalLinks {
     border: 5px solid #855723;
     border-radius: 20px;
-    /* background-color: #CDAA7D; */
     background-color: #DEB887;
-    width: 15%;
-    height: 80%;
-    left: 18%;
-    top: 10%;
-    position: absolute;
+    margin-left: 100px;
+    padding: 20px;
+    font-size: 20px;
 }
 
-#searchBar{
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-    background-color: white;
-    padding: 12px 3px 12px 3px;
+#aboveBar {
+    border: 5px solid #855723;
+    background-color: #DEB887;
 }
 
-#searchBar:focus {
-    border: 2px solid #855723;
+#specifyHikeButton {
+    background-color: #fff8dc;
+}
+
+#day1 img, #day2 img, #day3 img, #day4 img, #day5 img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    float:left;
+}
+
+#day1, #day2, #day3, #day4, #day5 {
+    float: right;
+    visibility:hidden;
+    width: 200px;
+    height: 100px;
+    
+}
+
+#day1 p, #day2 p, #day3 p, #day4 p, #day5 p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#day1 h4, #day2 h4, #day3 h4, #day4 h4, #day5 h4 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.trail {
+    border:solid;
+    border-width:medium;
+    visibility:hidden;
+}
+
+#trailInfo img {
+    float: right;
+    margin-right: 30px;
+    border-color: darkolivegreen;
+    border-width: 5px;
+    border-style: solid;
 }
