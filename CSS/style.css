@@ -108,6 +108,12 @@ pre {
     margin-bottom: 0px;
 }
 
+.trail {
+    border:solid;
+    border-width:medium;
+    visibility:hidden;
+}
+
 #trailInfo img {
     float: right;
     margin-right: 30px;
