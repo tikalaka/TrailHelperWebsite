@@ -52,6 +52,7 @@ pre {
     background-color: #CDAA7D;
     background-color: #DEB887;
     width: 50%;
+    min-width: 75%;
     min-height: 600px;
     margin-left: 20px;
     padding: 20px;
@@ -108,6 +109,12 @@ pre {
 #day1 h4, #day2 h4, #day3 h4, #day4 h4, #day5 h4 {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.trail {
+    border:solid;
+    border-width:medium;
+    visibility:hidden;
 }
 
 #trailInfo img {
