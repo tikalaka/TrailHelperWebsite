@@ -83,12 +83,14 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
     }
 
     function getTrails(latitude, longitude, distance, minStars, length, difficulty) {
-        let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-            + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars  + "&maxResults=500"            
-
-        fetch(proxyurl + url, {
-            method: 'GET'
-        })
+        if(latitude != "" && longitude != ""){
+            document.getElementById("alert").style.display = "none"
+            let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
+                + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars  + "&maxResults=500"            
+    
+            fetch(proxyurl + url, {
+                method: 'GET'
+            })
             .then(response => response.json())
             .then((data) => {
             let filteredTrails = filterTrails(data.trails, length, difficulty);
@@ -98,9 +100,12 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
                 document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
                 document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
                 document.getElementById("trail" + (i + 1)).style.visibility = "visible";
-        }
+            }
             })
             .catch((error) => console.log(error))
+        }else{
+            document.getElementById("alert").style.display = "block"
+        }
     }
 
     function filterTrails(trails, length, difficulty, userDistance) {
