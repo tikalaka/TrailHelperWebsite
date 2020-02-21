@@ -51,8 +51,7 @@ pre {
     border-radius: 20px;
     background-color: #CDAA7D;
     background-color: #DEB887;
-    width: 50%;
-    min-width: 75%;
+    width: 60%;
     min-height: 600px;
     margin-left: 20px;
     padding: 20px;
@@ -67,7 +66,6 @@ pre {
 }
 
 #verticalLinks {
-    float: left;
     border: 5px solid #855723;
     border-radius: 20px;
     background-color: #DEB887;
