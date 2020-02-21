@@ -10,26 +10,10 @@ function getLocation() {
 }
     
 function showPosition(position) {
-    var distance = document.getElementById("distance").value;
-    var minRating;
-    var elements2 = document.getElementsByName("minimumRating");              
-        for(i = 0; i < elements2.length; i++) { 
-            if(elements2[i].checked) 
-            minRating = "" + elements2[i].value; 
-        }
-    var length = document.getElementById("length").value;
-    var difficulty;
-    var elements3 = document.getElementsByName("difficulty");
-        for(i = 0; i < elements3.length; i++){
-            if(elements3[i].checked){
-                difficulty = "" + difficultyDecider(elements3[i].value)
-            }
-        }
     document.getElementById("latitude").value = position.coords.latitude
     document.getElementById("longitude").value = position.coords.longitude
     latitude1 = position.coords.latitude
     longitude1 = position.coords.longitude
-    getTrails(String(position.coords.latitude), String(position.coords.longitude), String(distance), String(minRating), String(length), String(difficulty))
     getWeather(String(position.coords.latitude), String(position.coords.longitude))    
 }
     
@@ -78,9 +62,29 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
     // conditionDetails: null
     // conditionDate: "1970-01-01 00:00:00"
 
+    function searchForTrails(){
+        var distance = document.getElementById("distance").value;
+        var minRating;
+        var elements2 = document.getElementsByName("minimumRating");              
+        for(i = 0; i < elements2.length; i++) { 
+            if(elements2[i].checked) 
+            minRating = "" + elements2[i].value; 
+        }
+        var length = document.getElementById("length").value;
+        var difficulty;
+        var elements3 = document.getElementsByName("difficulty");
+        for(i = 0; i < elements3.length; i++){
+            if(elements3[i].checked){
+                difficulty = "" + difficultyDecider(elements3[i].value)
+            }
+        }
+    
+        getTrails(String(document.getElementById("latitude").value), String(document.getElementById("longitude").value), String(distance), String(minRating), String(length), String(difficulty))
+    }
+
     function getTrails(latitude, longitude, distance, minStars, length, difficulty) {
         let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-            + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars // + "&maxResults=15"            
+            + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars  + "&maxResults=500"            
 
         fetch(proxyurl + url, {
             method: 'GET'
@@ -232,4 +236,3 @@ function getDistance(latitude, longitude, destinationLatitude, destinationLongit
         document.getElementById("day4").style.visibility = "visible";
         document.getElementById("day5").style.visibility = "visible";
     }
-
