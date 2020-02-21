@@ -116,6 +116,7 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
                 }
             }
         }
+        showOnSearch();
         return filteredTrails
     }
 
@@ -228,4 +229,14 @@ function getDistance(latitude, longitude, destinationLatitude, destinationLongit
         document.getElementById("day3").style.visibility = "visible";
         document.getElementById("day4").style.visibility = "visible";
         document.getElementById("day5").style.visibility = "visible";
+    }
+
+    function hideOnLoad() {
+        let trailList = document.getElementById("tenTrailsList");
+        trailList.style.display = "none";
+    }
+
+    function showOnSearch() {
+        let trailList = document.getElementById("tenTrailsList");
+        trailList.style.display = "block";
     }
