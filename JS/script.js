@@ -111,7 +111,6 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
                     if (getDistance(Number(latitude1), Number(longitude1),
                         Number(trails[i].latitude), Number(trails[i].longitude)) <= userDistance || userDistance == undefined) {
 
-                        console.log(trails[i])
                         filteredTrails.push(trails[i])
                     }
                 }

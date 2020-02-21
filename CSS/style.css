@@ -109,10 +109,19 @@ pre {
     margin-bottom: 0px;
 }
 
+.center{
+    text-align: center ;
+}
+
 .trail {
     border:solid;
     border-width:medium;
     visibility:hidden;
+    background-color: #EEB887;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    
 }
 
 #trailInfo img {
