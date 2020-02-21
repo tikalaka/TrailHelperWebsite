@@ -91,10 +91,8 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
         })
             .then(response => response.json())
             .then((data) => {
-        console.log(data);
             let filteredTrails = filterTrails(data.trails, length, difficulty);
             for (let i = 0; i < filteredTrails.length; i++) {
-                console.log("Thing needs to happen")
                 document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i].id;
                 document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i].name
                 document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
@@ -109,13 +107,10 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
         filteredTrails = []
         for (var i = 0; i < trails.length; i++) {
             if (trails[i].length <= length || length == "") {
-                console.log("test1")
                 if (trails[i].difficulty == difficulty || difficulty == "undefined") {
-                    console.log("test2")
                     if (getDistance(Number(latitude1), Number(longitude1),
                         Number(trails[i].latitude), Number(trails[i].longitude)) <= userDistance || userDistance == undefined) {
 
-                        console.log(trails[i])
                         filteredTrails.push(trails[i])
                     }
                 }
@@ -193,8 +188,6 @@ function getDistance(latitude, longitude, destinationLatitude, destinationLongit
     // console.log(finalDistance)
 
     finalDistance *= 69
-
-    console.log(finalDistance)
 
     return finalDistance
 

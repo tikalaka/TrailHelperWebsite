@@ -51,8 +51,7 @@ pre {
     border-radius: 20px;
     background-color: #CDAA7D;
     background-color: #DEB887;
-    width: 50%;
-    min-width: 75%;
+    width: 60%;
     min-height: 600px;
     margin-left: 20px;
     padding: 20px;
@@ -67,7 +66,6 @@ pre {
 }
 
 #verticalLinks {
-    float: left;
     border: 5px solid #855723;
     border-radius: 20px;
     background-color: #DEB887;
@@ -111,10 +109,19 @@ pre {
     margin-bottom: 0px;
 }
 
+.center{
+    text-align: center ;
+}
+
 .trail {
     border:solid;
     border-width:medium;
     visibility:hidden;
+    background-color: #EEB887;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    
 }
 
 #trailInfo img {
