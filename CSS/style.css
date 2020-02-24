@@ -46,6 +46,14 @@ pre {
     overflow: auto;
 }
 
+#tenTrailsList:empty{
+    display:none;
+}
+
+#tenTrailsList:blank{
+    display:none;
+}
+
 #mainContent, #trailInfo {
     border: 5px solid #855723;
     border-radius: 20px;
