@@ -131,3 +131,10 @@ pre {
     border-width: 5px;
     border-style: solid;
 }
+#alert {
+    padding: 20px;
+    background-color: #F8E473;
+    color: BLACK;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
