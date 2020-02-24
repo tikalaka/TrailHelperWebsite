@@ -82,29 +82,30 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
         getTrails(String(document.getElementById("latitude").value), String(document.getElementById("longitude").value), String(distance), String(minRating), String(length), String(difficulty))
     }
 
-    function getTrails(latitude, longitude, distance, minStars, length, difficulty, page) {
-        let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
-            + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars + "&maxResults=500"
-        let pageManager = 10 * page;
-        fetch(proxyurl + url, {
-            method: 'GET'
-        })
+    function getTrails(latitude, longitude, distance, minStars, length, difficulty) {
+        if(latitude != "" && longitude != ""){
+            document.getElementById("alert").style.display = "none"
+            let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
+                + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars  + "&maxResults=500"            
+    
+            fetch(proxyurl + url, {
+                method: 'GET'
+            })
             .then(response => response.json())
             .then((data) => {
-                let filteredTrails = filterTrails(data.trails, length, difficulty);
-                sessionStorage.setItem("filteredTrails", filteredTrails);
-                for (let i = 0; i < filteredTrails.length; i++) {
-                    if (document.getElementById("link" + (i + 1)))
-                    {
-                        document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i + pageManager - 10].id;
-                        document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i + pageManager - 10].name
-                        document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i + pageManager - 10].length + " Miles";
-                        document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i + pageManager - 10].stars + " Stars";
-                        document.getElementById("trail" + (i + 1)).style.visibility = "visible";
-                    }
-                }
+            let filteredTrails = filterTrails(data.trails, length, difficulty);
+            for (let i = 0; i < filteredTrails.length; i++) {
+                document.getElementById("link" + (i + 1)).href = "loadTrail.html?id=" + filteredTrails[i].id;
+                document.getElementById("trailName" + (i + 1)).innerHTML = filteredTrails[i].name
+                document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i].length + " Miles";
+                document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i].stars + " Stars";
+                document.getElementById("trail" + (i + 1)).style.visibility = "visible";
+            }
             })
             .catch((error) => console.log(error))
+        }else{
+            document.getElementById("alert").style.display = "block"
+        }
     }
 
     function filterTrails(trails, length, difficulty, userDistance) {
