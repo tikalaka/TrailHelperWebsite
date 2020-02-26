@@ -140,6 +140,11 @@ pre {
     border-width: 5px;
     border-style: solid;
 }
+
+#NextPage {
+    float:right;
+}
+
 #alert {
     padding: 20px;
     background-color: #F8E473;

@@ -49,7 +49,7 @@
         </ul>
     </div>
     </body>
-<body onload="getGottenTrails(10);">
+<body onload="getGottenTrails(sessionStorage.page * 10);">
     <div id="mainContent" class="grid">
         <h2>All the Trails</h2>
         <br>
@@ -134,10 +134,11 @@
                     <p id="trailStars10"></p>
                 </div>
             </a>
-            <div id="NextPage">
-                <button type="button" onclick="nextPage()">Next Page</button>
+            <div>
+                <button type="button" onclick="lastPage()">Last Page</button>
+                <button id="NextPage" type="button" onclick="nextPage()">Next Page</button>
             </div>
-    </div>
         </div>
+    </div>
 </body>
 </html>

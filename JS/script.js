@@ -88,7 +88,7 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
             let url = "https://www.hikingproject.com/data/get-trails?key=" + trailKey
                 + "&maxDistance=" + distance + "&lat=" + latitude + "&lon=" + longitude + "&minStars=" + minStars  + "&maxResults=500"            
 
-            sessionStorage.page = 0;
+            sessionStorage.page = 1;
             fetch(proxyurl + url, {
                 method: 'GET'
             })
@@ -112,12 +112,20 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
         document.getElementById("tenTrailsList").style.visibility = "visible";
     }
 function nextPage() {
-    sessionStorage.page++;
-    getGottenTrails(10 * sessionStorage.page)
+    console.log(10 * (Number(sessionStorage.page) + 1))
+    console.log(JSON.parse(sessionStorage.getItem("filteredTrails")).length)
+    console.log(10 * (Number(sessionStorage.page) + 1) <= JSON.parse(sessionStorage.getItem("filteredTrails")).length)
+    if (10 * Number(sessionStorage.page) <= JSON.parse(sessionStorage.getItem("filteredTrails")).length) {
+        sessionStorage.page++;
+        console.log(sessionStorage.page)
+        getGottenTrails(10 * sessionStorage.page)
+    }
 }
 function lastPage() {
-    sessionStorage.page--;
-    getGottenTrails(10 * sessionStorage.page)
+    if (sessionStorage.page > 1) {
+        sessionStorage.page--;
+        getGottenTrails(10 * sessionStorage.page)
+    }
 }
     function getGottenTrails(pageManager) {
         let filteredTrails = JSON.parse(sessionStorage.getItem("filteredTrails"));
@@ -128,7 +136,8 @@ function lastPage() {
                     document.getElementById("trailLength" + (i + 1)).innerHTML = filteredTrails[i + pageManager - 10].length + " Miles";
                     document.getElementById("trailStars" + (i + 1)).innerHTML = filteredTrails[i + pageManager - 10].stars + " Stars";
                     document.getElementById("trail" + (i + 1)).style.visibility = "visible";
-            }
+        }
+        document.getElementById("tenTrailsList").style.visibility = "visible";
 }
 
     function filterTrails(trails, length, difficulty, userDistance) {
