@@ -47,6 +47,14 @@ pre {
     visibility:hidden;
 }
 
+#tenTrailsList:empty{
+    display:none;
+}
+
+#tenTrailsList:blank{
+    display:none;
+}
+
 #mainContent, #trailInfo {
     border: 5px solid #855723;
     border-radius: 20px;
@@ -132,3 +140,10 @@ pre {
     border-width: 5px;
     border-style: solid;
 }
+#alert {
+    padding: 20px;
+    background-color: #F8E473;
+    color: BLACK;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
