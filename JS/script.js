@@ -116,7 +116,6 @@ const trailKey = "200681455-ed23a70461e56c7a6b59a26fbd4c00ba"
 function nextPage() {
     if (10 * Number(sessionStorage.page) <= JSON.parse(sessionStorage.getItem("filteredTrails")).length) {
         sessionStorage.page++;
-        console.log(sessionStorage.page)
         getGottenTrails(10 * sessionStorage.page)
     }
 }
