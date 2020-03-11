@@ -1,0 +1,56 @@
+body {
+    background-image: url("../images/OtherForest.jpg");
+    background-size: cover, contain;
+    background-repeat: no-repeat;
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: rgb(92, 92, 17);
+
+}
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+li {
+    float: left;
+    padding: 8px;
+    border-right: 1px solid #855723;
+}
+li:last-child {
+    border-right: none;
+}
+a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 2px;
+}
+li a:hover {
+    background-color: #cc9966;
+    border-radius: 3px;
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#aboveBar {
+    border: 5px solid #855723;
+    background-color: #DEB887;
+}
+
+#trailInfo {
+    border: 5px solid #855723;
+    border-radius: 20px;
+    background-color: #CDAA7D;
+    background-color: #DEB887;
+    min-height: 600px;
+    margin-left: 20px;
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
