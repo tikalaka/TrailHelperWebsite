@@ -7,7 +7,12 @@
     <script src="../JS/script.js"></script>
 </head>
 
-<body>
+<body onload="hideOnLoad()">
+
+    <div id="alert" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Please provide values for your latitude and longitude.
+    </div>
     
     <div id="weatherInfo">
         <div id="day5">
@@ -122,9 +127,6 @@
                     <p id="trailStars5"></p>
                 </div>
             </a>
-            <div id="NextPage">
-                <button type="button">Next Page</button>
-            </div>
     </div>
 </body>
 </html>

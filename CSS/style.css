@@ -44,6 +44,15 @@ pre {
 
 #tenTrailsList{
     overflow: auto;
+    visibility:hidden;
+}
+
+#tenTrailsList:empty{
+    display:none;
+}
+
+#tenTrailsList:blank{
+    display:none;
 }
 
 #mainContent, #trailInfo {
@@ -116,11 +125,11 @@ pre {
 .trail {
     border:solid;
     border-width:medium;
-    visibility:hidden;
     background-color: #EEB887;
     text-align: center;
     padding-left: 20%;
     padding-right: 20%;
+    display:none;
     
 }
 
@@ -131,3 +140,15 @@ pre {
     border-width: 5px;
     border-style: solid;
 }
+
+#NextPage {
+    float:right;
+}
+
+#alert {
+    padding: 20px;
+    background-color: #F8E473;
+    color: BLACK;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
